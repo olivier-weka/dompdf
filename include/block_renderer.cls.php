@@ -6,6 +6,8 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+
 /**
  * Renders block frames
  *
@@ -77,7 +79,7 @@ class Block_Renderer extends Abstract_Renderer
         }
     }
 
-    protected function _render_border(Frame_Decorator $frame, $border_box = null, $corner_style = "bevel")
+    protected function _render_border(Decorator $frame, $border_box = null, $corner_style = "bevel")
     {
         $style = $frame->get_style();
         $bp = $style->get_border_properties();
@@ -162,7 +164,7 @@ class Block_Renderer extends Abstract_Renderer
         }
     }
 
-    protected function _render_outline(Frame_Decorator $frame, $border_box = null, $corner_style = "bevel")
+    protected function _render_outline(Decorator $frame, $border_box = null, $corner_style = "bevel")
     {
         $style = $frame->get_style();
 

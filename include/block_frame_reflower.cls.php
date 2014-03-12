@@ -7,6 +7,10 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+use \DomPdf\Frame\Decorator\Block as BlockDecorator;
+use \DomPdf\Frame\Decorator\Text as TextDecorator;
+
 /**
  * Reflows block frames
  *
@@ -19,11 +23,11 @@ class Block_Frame_Reflower extends Frame_Reflower
     const MIN_JUSTIFY_WIDTH = 0.80;
 
     /**
-     * @var Block_Frame_Decorator
+     * @var BlockDecorator
      */
     protected $_frame;
 
-    function __construct(Block_Frame_Decorator $frame)
+    function __construct(BlockDecorator $frame)
     {
         parent::__construct($frame);
     }
@@ -397,7 +401,7 @@ class Block_Frame_Reflower extends Frame_Reflower
                     }
 
                     foreach ($line->get_frames() as $frame) {
-                        if ($frame instanceof Block_Frame_Decorator) {
+                        if ($frame instanceof BlockDecorator) {
                             continue;
                         }
                         $frame->set_position($frame->get_position("x") + $line->left);
@@ -412,7 +416,7 @@ class Block_Frame_Reflower extends Frame_Reflower
 
                     foreach ($line->get_frames() as $frame) {
                         // Block frames are not aligned by text-align
-                        if ($frame instanceof Block_Frame_Decorator) {
+                        if ($frame instanceof BlockDecorator) {
                             continue;
                         }
 
@@ -439,7 +443,7 @@ class Block_Frame_Reflower extends Frame_Reflower
                 foreach ($lines as $line) {
                     if ($line->left) {
                         foreach ($line->get_frames() as $frame) {
-                            if (!$frame instanceof Text_Frame_Decorator) {
+                            if (!$frame instanceof TextDecorator) {
                                 continue;
                             }
 
@@ -460,7 +464,7 @@ class Block_Frame_Reflower extends Frame_Reflower
 
                     $dx = 0;
                     foreach ($line->get_frames() as $frame) {
-                        if (!$frame instanceof Text_Frame_Decorator) {
+                        if (!$frame instanceof TextDecorator) {
                             continue;
                         }
 
@@ -491,7 +495,7 @@ class Block_Frame_Reflower extends Frame_Reflower
 
                     foreach ($line->get_frames() as $frame) {
                         // Block frames are not aligned by text-align
-                        if ($frame instanceof Block_Frame_Decorator) {
+                        if ($frame instanceof BlockDecorator) {
                             continue;
                         }
 
@@ -617,7 +621,7 @@ class Block_Frame_Reflower extends Frame_Reflower
 
             // Remove next frame's beginning whitespace
             $next = $child->get_next_sibling();
-            if ($next && $next instanceof Text_Frame_Decorator) {
+            if ($next && $next instanceof TextDecorator) {
                 $next->set_text(ltrim($next->get_text()));
             }
 
@@ -659,9 +663,9 @@ class Block_Frame_Reflower extends Frame_Reflower
     }
 
     /**
-     * @param Frame_Decorator $block
+     * @param Decorator $block
      */
-    function reflow(Block_Frame_Decorator $block = null)
+    function reflow(BlockDecorator $block = null)
     {
 
         // Check if a page break is forced

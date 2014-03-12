@@ -6,6 +6,8 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+
 /**
  * Reflows list bullets
  *
@@ -15,14 +17,14 @@
 class List_Bullet_Frame_Reflower extends Frame_Reflower
 {
 
-    function __construct(Frame_Decorator $frame)
+    function __construct(Decorator $frame)
     {
         parent::__construct($frame);
     }
 
     //........................................................................
 
-    function reflow(Block_Frame_Decorator $block = null)
+    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
     {
         $style = $this->_frame->get_style();
 

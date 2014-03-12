@@ -7,6 +7,8 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+
 /**
  * Positions list bullets
  *
@@ -16,7 +18,7 @@
 class List_Bullet_Positioner extends Positioner
 {
 
-    function __construct(Frame_Decorator $frame)
+    function __construct(Decorator $frame)
     {
         parent::__construct($frame);
     }

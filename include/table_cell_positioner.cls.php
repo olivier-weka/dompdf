@@ -6,6 +6,8 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+
 /**
  * Positions table cells
  *
@@ -15,7 +17,7 @@
 class Table_Cell_Positioner extends Positioner
 {
 
-    function __construct(Frame_Decorator $frame)
+    function __construct(Decorator $frame)
     {
         parent::__construct($frame);
     }
@@ -25,7 +27,7 @@ class Table_Cell_Positioner extends Positioner
     function position()
     {
 
-        $table = Table_Frame_Decorator::find_parent_table($this->_frame);
+        $table = \DomPdf\Frame\Decorator\Table::find_parent_table($this->_frame);
         $cellmap = $table->get_cellmap();
         $this->_frame->set_position($cellmap->get_frame_position($this->_frame));
 

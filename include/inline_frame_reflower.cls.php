@@ -22,7 +22,7 @@ class Inline_Frame_Reflower extends Frame_Reflower
 
     //........................................................................
 
-    function reflow(Block_Frame_Decorator $block = null)
+    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
     {
         $frame = $this->_frame;
 
@@ -43,14 +43,14 @@ class Inline_Frame_Reflower extends Frame_Reflower
         $cb = $frame->get_containing_block();
 
         // Add our margin, padding & border to the first and last children
-        if (($f = $frame->get_first_child()) && $f instanceof Text_Frame_Decorator) {
+        if (($f = $frame->get_first_child()) && $f instanceof \DomPdf\Frame\Decorator\Text) {
             $f_style = $f->get_style();
             $f_style->margin_left = $style->margin_left;
             $f_style->padding_left = $style->padding_left;
             $f_style->border_left = $style->border_left;
         }
 
-        if (($l = $frame->get_last_child()) && $l instanceof Text_Frame_Decorator) {
+        if (($l = $frame->get_last_child()) && $l instanceof \DomPdf\Frame\Decorator\Text) {
             $l_style = $l->get_style();
             $l_style->margin_right = $style->margin_right;
             $l_style->padding_right = $style->padding_right;

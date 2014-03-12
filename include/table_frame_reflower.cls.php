@@ -6,6 +6,8 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use \DomPdf\Frame\Decorator\Table as TableDecorator;
+
 /**
  * Reflows tables
  *
@@ -17,7 +19,7 @@ class Table_Frame_Reflower extends Frame_Reflower
     /**
      * Frame for this reflower
      *
-     * @var Table_Frame_Decorator
+     * @var TableDecorator
      */
     protected $_frame;
 
@@ -28,7 +30,7 @@ class Table_Frame_Reflower extends Frame_Reflower
      */
     protected $_state;
 
-    function __construct(Table_Frame_Decorator $frame)
+    function __construct(TableDecorator $frame)
     {
         $this->_state = null;
         parent::__construct($frame);
@@ -370,12 +372,12 @@ class Table_Frame_Reflower extends Frame_Reflower
     //........................................................................
 
     /**
-     * @param Block_Frame_Decorator $block
+     * @param \DomPdf\Frame\Decorator\Block $block
      */
-    function reflow(Block_Frame_Decorator $block = null)
+    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
     {
         /**
-         * @var Table_Frame_Decorator
+         * @var TableDecorator
          */
         $frame = $this->_frame;
 

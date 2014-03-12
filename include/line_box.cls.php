@@ -6,6 +6,8 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use DomPdf\Frame\Decorator\Block as BlockDecorator;
+
 /**
  * The line box class
  *
@@ -19,7 +21,7 @@ class Line_Box
 {
 
     /**
-     * @var Block_Frame_Decorator
+     * @var BlockDecorator
      */
     protected $_block_frame;
 
@@ -76,9 +78,9 @@ class Line_Box
     /**
      * Class constructor
      *
-     * @param Block_Frame_Decorator $frame the Block_Frame_Decorator containing this line
+     * @param BlockDecorator $frame containing this line
      */
-    function __construct(Block_Frame_Decorator $frame, $y = 0)
+    function __construct(BlockDecorator $frame, $y = 0)
     {
         $this->_block_frame = $frame;
         $this->_frames = array();
@@ -90,11 +92,11 @@ class Line_Box
     /**
      * Returns the floating elements inside the first floating parent
      *
-     * @param Page_Frame_Decorator $root
+     * @param \DomPdf\Frame\Decorator\Page $root
      *
      * @return Frame[]
      */
-    function get_floats_inside(Page_Frame_Decorator $root)
+    function get_floats_inside(\DomPdf\Frame\Decorator\Page $root)
     {
         $floating_frames = $root->get_floating_frames();
 
@@ -211,7 +213,7 @@ class Line_Box
     }
 
     /**
-     * @return Block_Frame_Decorator
+     * @return BlockDecorator
      */
     function get_block_frame()
     {

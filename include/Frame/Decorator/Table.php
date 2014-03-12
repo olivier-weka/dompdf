@@ -5,6 +5,10 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Decorator;
+
+use \Frame;
+use \Cellmap;
 
 /**
  * Decorates Frames for table layout
@@ -12,7 +16,7 @@
  * @access private
  * @package dompdf
  */
-class Table_Frame_Decorator extends Frame_Decorator
+class Table extends AbstractDecorator
 {
     public static $VALID_CHILDREN = array(
         "table-row-group",
@@ -73,9 +77,9 @@ class Table_Frame_Decorator extends Frame_Decorator
      * Class constructor
      *
      * @param Frame $frame the frame to decorate
-     * @param DOMPDF $dompdf
+     * @param \DOMPDF $dompdf
      */
-    public function __construct(Frame $frame, DOMPDF $dompdf)
+    public function __construct(Frame $frame, \DOMPDF $dompdf)
     {
         parent::__construct($frame, $dompdf);
         $this->_cellmap = new Cellmap($this);
@@ -163,10 +167,10 @@ class Table_Frame_Decorator extends Frame_Decorator
     /**
      * Return a copy of this frame with $node as its node
      *
-     * @param DOMNode $node
+     * @param \DOMNode $node
      * @return Frame
      */
-    public function copy(DOMNode $node)
+    public function copy(\DOMNode $node)
     {
         $deco = parent::copy($node);
 
@@ -181,7 +185,7 @@ class Table_Frame_Decorator extends Frame_Decorator
      * Static function to locate the parent table of a frame
      *
      * @param Frame $frame
-     * @return Table_Frame_Decorator the table that is an ancestor of $frame
+     * @return Table the table that is an ancestor of $frame
      */
     public static function find_parent_table(Frame $frame)
     {
@@ -302,7 +306,7 @@ class Table_Frame_Decorator extends Frame_Decorator
                     // Okay, I have absolutely no idea why I need this clone here, but
                     // if it's omitted, php (as of 2004-07-28) segfaults.
                     $frame->set_style(clone $style);
-                    $table_row = Frame_Factory::decorate_frame($frame, $this->_dompdf, $this->_root);
+                    $table_row = \Frame_Factory::decorate_frame($frame, $this->_dompdf, $this->_root);
 
                     // Add the cell to the row
                     $table_row->append_child($child);
@@ -332,7 +336,7 @@ class Table_Frame_Decorator extends Frame_Decorator
             }
         }
 
-        if ($anon_row && $table_row instanceof DOMNode) {
+        if ($anon_row && $table_row instanceof \DOMNode) {
             // Add the row to the table
             $this->_frame->append_child($table_row);
             $table_row->normalise();

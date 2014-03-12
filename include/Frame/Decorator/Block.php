@@ -5,6 +5,10 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Decorator;
+
+use \Line_Box;
+use \Frame;
 
 /**
  * Decorates frames for block layout
@@ -12,7 +16,7 @@
  * @access private
  * @package dompdf
  */
-class Block_Frame_Decorator extends Frame_Decorator
+class Block extends AbstractDecorator
 {
     /**
      * Current line index
@@ -28,7 +32,7 @@ class Block_Frame_Decorator extends Frame_Decorator
      */
     protected $_line_boxes;
 
-    function __construct(Frame $frame, DOMPDF $dompdf)
+    function __construct(Frame $frame, \DOMPDF $dompdf)
     {
         parent::__construct($frame, $dompdf);
 
@@ -93,8 +97,8 @@ class Block_Frame_Decorator extends Frame_Decorator
 
         /*
         // Adds a new line after a block, only if certain conditions are met
-        if ((($frame instanceof Inline_Frame_Decorator && $frame->get_node()->nodeName !== "br") ||
-              $frame instanceof Text_Frame_Decorator && trim($frame->get_text())) &&
+        if ((($frame instanceof Inline && $frame->get_node()->nodeName !== "br") ||
+              $frame instanceof Text && trim($frame->get_text())) &&
             ($frame->get_prev_sibling() && $frame->get_prev_sibling()->get_style()->display === "block" &&
              $this->_line_boxes[$this->_cl]->w > 0 )) {
 
@@ -108,7 +112,7 @@ class Block_Frame_Decorator extends Frame_Decorator
         else*/
 
         // Handle inline frames (which are effectively wrappers)
-        if ($frame instanceof Inline_Frame_Decorator) {
+        if ($frame instanceof Inline) {
 
             // Handle line breaks
             if ($frame->get_node()->nodeName === "br") {

@@ -16,14 +16,14 @@ class Table_Row_Frame_Reflower extends Frame_Reflower
 {
 
 
-    function __construct(Table_Row_Frame_Decorator $frame)
+    function __construct(\DomPdf\Frame\Decorator\TableRow $frame)
     {
         parent::__construct($frame);
     }
 
     //........................................................................
 
-    function reflow(Block_Frame_Decorator $block = null)
+    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
     {
         $page = $this->_frame->get_root();
 
@@ -47,7 +47,7 @@ class Table_Row_Frame_Reflower extends Frame_Reflower
         if ($page->is_full())
             return;
 
-        $table = Table_Frame_Decorator::find_parent_table($this->_frame);
+        $table = \DomPdf\Frame\Decorator\Table::find_parent_table($this->_frame);
         $cellmap = $table->get_cellmap();
         $style->width = $cellmap->get_frame_width($this->_frame);
         $style->height = $cellmap->get_frame_height($this->_frame);

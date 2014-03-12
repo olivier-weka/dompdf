@@ -5,6 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Decorator;
 
 /**
  * Dummy decorator
@@ -12,10 +13,10 @@
  * @access private
  * @package dompdf
  */
-class Null_Frame_Decorator extends Frame_Decorator
+class Null extends AbstractDecorator
 {
 
-    function __construct(Frame $frame, DOMPDF $dompdf)
+    function __construct(\Frame $frame, \DOMPDF $dompdf)
     {
         parent::__construct($frame, $dompdf);
         $style = $this->_frame->get_style();

@@ -20,7 +20,7 @@ class Null_Frame_Reflower extends Frame_Reflower
         parent::__construct($frame);
     }
 
-    function reflow(Block_Frame_Decorator $block = null)
+    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
     {
         return;
     }

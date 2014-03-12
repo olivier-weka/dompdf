@@ -127,7 +127,7 @@ abstract class Frame_Reflower
 
     //........................................................................
 
-    abstract function reflow(Block_Frame_Decorator $block = null);
+    abstract function reflow(\DomPdf\Frame\Decorator\Block $block = null);
 
     //........................................................................
 

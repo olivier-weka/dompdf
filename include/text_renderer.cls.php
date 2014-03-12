@@ -32,7 +32,7 @@ class Text_Renderer extends Abstract_Renderer
     //........................................................................
 
     /**
-     * @param Text_Frame_Decorator $frame
+     * @param Frame $frame
      */
     function render(Frame $frame)
     {

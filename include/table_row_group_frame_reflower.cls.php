@@ -20,14 +20,14 @@ class Table_Row_Group_Frame_Reflower extends Frame_Reflower
         parent::__construct($frame);
     }
 
-    function reflow(Block_Frame_Decorator $block = null)
+    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
     {
         $page = $this->_frame->get_root();
 
         $style = $this->_frame->get_style();
 
         // Our width is equal to the width of our parent table
-        $table = Table_Frame_Decorator::find_parent_table($this->_frame);
+        $table = \DomPdf\Frame\Decorator\Table::find_parent_table($this->_frame);
 
         $cb = $this->_frame->get_containing_block();
 

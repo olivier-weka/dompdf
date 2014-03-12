@@ -92,7 +92,7 @@ class Frame_Tree
     /**
      * Returns the root frame of the tree
      *
-     * @return Page_Frame_Decorator
+     * @return \DomPdf\Frame\Decorator\Page
      */
     public function get_root()
     {

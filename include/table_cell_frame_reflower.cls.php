@@ -17,19 +17,19 @@ class Table_Cell_Frame_Reflower extends Block_Frame_Reflower
 
     //........................................................................
 
-    function __construct(Block_Frame_Decorator $frame)
+    function __construct(\DomPdf\Frame\Decorator\Block $frame)
     {
         parent::__construct($frame);
     }
 
     //........................................................................
 
-    function reflow(Block_Frame_Decorator $block = null)
+    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
     {
 
         $style = $this->_frame->get_style();
 
-        $table = Table_Frame_Decorator::find_parent_table($this->_frame);
+        $table = \DomPdf\Frame\Decorator\Table::find_parent_table($this->_frame);
         $cellmap = $table->get_cellmap();
 
         list($x, $y) = $cellmap->get_frame_position($this->_frame);

@@ -5,6 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Decorator;
 
 /**
  * Table row group decorator
@@ -14,16 +15,16 @@
  * @access private
  * @package dompdf
  */
-class Table_Row_Group_Frame_Decorator extends Frame_Decorator
+class TableRowGroup extends AbstractDecorator
 {
 
     /**
      * Class constructor
      *
-     * @param Frame $frame Frame to decorate
-     * @param DOMPDF $dompdf Current dompdf instance
+     * @param \Frame $frame Frame to decorate
+     * @param \DOMPDF $dompdf Current dompdf instance
      */
-    function __construct(Frame $frame, DOMPDF $dompdf)
+    function __construct(\Frame $frame, \DOMPDF $dompdf)
     {
         parent::__construct($frame, $dompdf);
     }
@@ -31,12 +32,12 @@ class Table_Row_Group_Frame_Decorator extends Frame_Decorator
     /**
      * Override split() to remove all child rows and this element from the cellmap
      *
-     * @param Frame $child
+     * @param \Frame $child
      * @param bool $force_pagebreak
      *
      * @return void
      */
-    function split(Frame $child = null, $force_pagebreak = false)
+    function split(\Frame $child = null, $force_pagebreak = false)
     {
 
         if (is_null($child)) {

@@ -17,18 +17,18 @@ class Text_Frame_Reflower extends Frame_Reflower
 {
 
     /**
-     * @var Block_Frame_Decorator
+     * @var \DomPdf\Frame\Decorator\Block
      */
     protected $_block_parent; // Nearest block-level ancestor
 
     /**
-     * @var Text_Frame_Decorator
+     * @var \DomPdf\Frame\Decorator\Text
      */
     protected $_frame;
 
     public static $_whitespace_pattern = "/[ \t\r\n\f]+/u";
 
-    function __construct(Text_Frame_Decorator $frame)
+    function __construct(\DomPdf\Frame\Decorator\Text $frame)
     {
         parent::__construct($frame);
     }
@@ -299,7 +299,7 @@ class Text_Frame_Reflower extends Frame_Reflower
             // FIXME: Include non-breaking spaces?
             $t = $frame->get_text();
             $parent = $frame->get_parent();
-            $is_inline_frame = get_class($parent) === 'Inline_Frame_Decorator';
+            $is_inline_frame = get_class($parent) === '\DomPdf\Frame\Decorator\Inline';
 
             if ((!$is_inline_frame && !$frame->get_next_sibling()) /* ||
           ( $is_inline_frame && !$parent->get_next_sibling())*/
@@ -323,7 +323,7 @@ class Text_Frame_Reflower extends Frame_Reflower
 
     //........................................................................
 
-    function reflow(Block_Frame_Decorator $block = null)
+    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
     {
         $frame = $this->_frame;
         $page = $frame->get_root();

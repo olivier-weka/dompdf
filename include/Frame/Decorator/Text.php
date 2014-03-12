@@ -7,6 +7,7 @@
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Decorator;
 
 /**
  * Decorates Frame objects for text layout
@@ -14,7 +15,7 @@
  * @access private
  * @package dompdf
  */
-class Text_Frame_Decorator extends Frame_Decorator
+class Text extends AbstractDecorator
 {
 
     // protected members
@@ -23,10 +24,10 @@ class Text_Frame_Decorator extends Frame_Decorator
     // buggy DOMText::splitText (PHP < 5.2.7)
     public static $_buggy_splittext;
 
-    function __construct(Frame $frame, DOMPDF $dompdf)
+    function __construct(\Frame $frame, \DOMPDF $dompdf)
     {
         if (!$frame->is_text_node())
-            throw new DOMPDF_Exception("Text_Decorator can only be applied to #text nodes.");
+            throw new \DOMPDF_Exception(__CLASS__." can only be applied to #text nodes.");
 
         parent::__construct($frame, $dompdf);
         $this->_text_spacing = null;
@@ -94,7 +95,7 @@ class Text_Frame_Decorator extends Frame_Decorator
         pre_r(($style->line_height / $size) * Font_Metrics::get_font_height($font, $size));
         */
 
-        return ($style->line_height / ($size > 0 ? $size : 1)) * Font_Metrics::get_font_height($font, $size);
+        return ($style->line_height / ($size > 0 ? $size : 1)) * \Font_Metrics::get_font_height($font, $size);
 
     }
 
@@ -115,7 +116,7 @@ class Text_Frame_Decorator extends Frame_Decorator
         $char_spacing = $style->length_in_pt($style->letter_spacing);
 
         // Re-adjust our width to account for the change in spacing
-        $style->width = Font_Metrics::get_text_width($this->get_text(), $style->font_family, $style->font_size, $spacing, $char_spacing);
+        $style->width = \Font_Metrics::get_text_width($this->get_text(), $style->font_family, $style->font_size, $spacing, $char_spacing);
     }
 
     //........................................................................
@@ -130,7 +131,7 @@ class Text_Frame_Decorator extends Frame_Decorator
         $word_spacing = $style->length_in_pt($style->word_spacing);
         $char_spacing = $style->length_in_pt($style->letter_spacing);
 
-        return $style->width = Font_Metrics::get_text_width($text, $font, $size, $word_spacing, $char_spacing);
+        return $style->width = \Font_Metrics::get_text_width($text, $font, $size, $word_spacing, $char_spacing);
     }
 
     //........................................................................
@@ -151,7 +152,7 @@ class Text_Frame_Decorator extends Frame_Decorator
             $txt1 = $node->substringData($offset, mb_strlen($node->textContent) - 1);
 
             $node->replaceData(0, mb_strlen($node->textContent), $txt0);
-            $split = $node->parentNode->appendChild(new DOMText($txt1));
+            $split = $node->parentNode->appendChild(new \DOMText($txt1));
         } else {
             $split = $this->_frame->get_node()->splitText($offset);
         }
@@ -161,7 +162,7 @@ class Text_Frame_Decorator extends Frame_Decorator
         $p = $this->get_parent();
         $p->insert_child_after($deco, $this, false);
 
-        if ($p instanceof Inline_Frame_Decorator)
+        if ($p instanceof Inline)
             $p->split($deco);
 
         return $deco;
@@ -183,4 +184,4 @@ class Text_Frame_Decorator extends Frame_Decorator
 
 }
 
-Text_Frame_Decorator::$_buggy_splittext = PHP_VERSION_ID < 50207;
+Text::$_buggy_splittext = PHP_VERSION_ID < 50207;

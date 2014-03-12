@@ -6,6 +6,8 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+
 /**
  * Positions inline frames
  *
@@ -15,7 +17,7 @@
 class Inline_Positioner extends Positioner
 {
 
-    function __construct(Frame_Decorator $frame)
+    function __construct(Decorator $frame)
     {
         parent::__construct($frame);
     }
@@ -26,7 +28,7 @@ class Inline_Positioner extends Positioner
     {
         /**
          * Find our nearest block level parent and access its lines property.
-         * @var Block_Frame_Decorator
+         * @var \DomPdf\Frame\Decorator\Block
          */
         $p = $this->_frame->find_block_parent();
 
@@ -58,7 +60,7 @@ class Inline_Positioner extends Positioner
         $f = $this->_frame;
 
         if (!$is_fixed && $f->get_parent() &&
-            $f->get_parent() instanceof Inline_Frame_Decorator &&
+            $f->get_parent() instanceof \DomPdf\Frame\Decorator\Inline &&
             $f->is_text_node()
         ) {
 

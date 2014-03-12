@@ -6,6 +6,8 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+
 /**
  * Base Positioner class
  *
@@ -18,13 +20,13 @@ abstract class Positioner
 {
 
     /**
-     * @var Frame_Decorator
+     * @var Decorator
      */
     protected $_frame;
 
     //........................................................................
 
-    function __construct(Frame_Decorator $frame)
+    function __construct(Decorator $frame)
     {
         $this->_frame = $frame;
     }

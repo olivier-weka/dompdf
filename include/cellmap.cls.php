@@ -6,6 +6,8 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use DomPdf\Frame\Decorator\Table as TableDecorator;
+
 /**
  * Maps table cells to the table grid.
  *
@@ -38,7 +40,7 @@ class Cellmap
     /**
      * The table object this cellmap is attached to.
      *
-     * @var Table_Frame_Decorator
+     * @var TableDecorator
      */
     protected $_table;
 
@@ -120,9 +122,9 @@ class Cellmap
     private $_fixed_layout = false;
 
     /**
-     * @param Table_Frame_Decorator $table
+     * @param TableDecorator $table
      */
-    public function __construct(Table_Frame_Decorator $table)
+    public function __construct(TableDecorator $table)
     {
         $this->_table = $table;
         $this->reset();
@@ -493,7 +495,7 @@ class Cellmap
         if ($display === "table-row" ||
             $display === "table" ||
             $display === "inline-table" ||
-            in_array($display, Table_Frame_Decorator::$ROW_GROUPS)
+            in_array($display, TableDecorator::$ROW_GROUPS)
         ) {
 
             $start_row = $this->__row;
@@ -810,7 +812,7 @@ class Cellmap
                 $h += $this->_rows[$row]["height"];
             }
 
-            if ($frame instanceof Table_Cell_Frame_Decorator) {
+            if ($frame instanceof \DomPdf\Frame\Decorator\TableCell) {
                 $frame->set_cell_height($h);
             } else {
                 $frame->get_style()->height = $h;
@@ -842,7 +844,7 @@ class Cellmap
                 $new_height = 0;
             }
 
-            if ($frame instanceof Table_Cell_Frame_Decorator) {
+            if ($frame instanceof \DomPdf\Frame\Decorator\TableCell) {
                 $frame->set_cell_height($new_height);
             } else {
                 $frame->get_style()->height = $new_height;

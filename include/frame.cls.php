@@ -1,13 +1,13 @@
 <?php
-
-use DomPdf\Frame\FrameList;
-
 /**
  * @package dompdf
  * @link    http://dompdf.github.com/
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+
+use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+use DomPdf\Frame\FrameList;
 
 /**
  * The main Frame class
@@ -129,7 +129,7 @@ class Frame
     /**
      * This frame's decorator
      *
-     * @var Frame_Decorator
+     * @var Decorator
      */
     protected $_decorator;
 
@@ -365,7 +365,7 @@ class Frame
     }
 
     /**
-     * @return Frame_Decorator
+     * @return Decorator
      */
     public function get_decorator()
     {
@@ -631,9 +631,9 @@ class Frame
     }
 
     /**
-     * @param Frame_Decorator $decorator
+     * @param Decorator $decorator
      */
-    public function set_decorator(Frame_Decorator $decorator)
+    public function set_decorator(Decorator $decorator)
     {
         $this->_decorator = $decorator;
     }
@@ -1061,11 +1061,11 @@ class Frame
 
         $str .= "\nStyle: <pre>" . $this->_style->__toString() . "</pre>";
 
-        if ($this->_decorator instanceof Block_Frame_Decorator) {
+        if ($this->_decorator instanceof \DomPdf\Frame\Decorator\Block) {
             $str .= "Lines:<pre>";
             foreach ($this->_decorator->get_line_boxes() as $line) {
                 foreach ($line->get_frames() as $frame) {
-                    if ($frame instanceof Text_Frame_Decorator) {
+                    if ($frame instanceof \DomPdf\Frame\Decorator\Text) {
                         $str .= "\ntext: ";
                         $str .= "'" . htmlspecialchars($frame->get_text()) . "'";
                     } else {

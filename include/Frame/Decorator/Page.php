@@ -5,6 +5,10 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Decorator;
+
+use \Renderer;
+use \Frame;
 
 /**
  * Decorates frames for page layout
@@ -12,7 +16,7 @@
  * @access private
  * @package dompdf
  */
-class Page_Frame_Decorator extends Frame_Decorator
+class Page extends AbstractDecorator
 {
 
     /**
@@ -56,9 +60,9 @@ class Page_Frame_Decorator extends Frame_Decorator
      * Class constructor
      *
      * @param Frame $frame the frame to decorate
-     * @param DOMPDF $dompdf
+     * @param \DOMPDF $dompdf
      */
-    function __construct(Frame $frame, DOMPDF $dompdf)
+    function __construct(Frame $frame, \DOMPDF $dompdf)
     {
         parent::__construct($frame, $dompdf);
         $this->_page_full = false;
@@ -322,7 +326,7 @@ class Page_Frame_Decorator extends Frame_Decorator
             return true;
 
         } // Inline frames (2):
-        else if (in_array($display, Style::$INLINE_TYPES)) {
+        else if (in_array($display, \Style::$INLINE_TYPES)) {
 
             // Avoid breaks within table-cells
             if ($this->_in_table) {
@@ -377,7 +381,7 @@ class Page_Frame_Decorator extends Frame_Decorator
 
             // Simply check if the parent table's page_break_inside property is
             // not 'avoid'
-            $p = Table_Frame_Decorator::find_parent_table($frame);
+            $p = Table::find_parent_table($frame);
 
             while ($p) {
                 if ($p->get_style()->page_break_inside === "avoid") {
@@ -402,7 +406,7 @@ class Page_Frame_Decorator extends Frame_Decorator
             dompdf_debug("page-break", "table-row/row-groups: break allowed");
             return true;
 
-        } else if (in_array($display, Table_Frame_Decorator::$ROW_GROUPS)) {
+        } else if (in_array($display, Table::$ROW_GROUPS)) {
 
             // Disallow breaks at row-groups: only split at row boundaries
             return false;

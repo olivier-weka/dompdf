@@ -6,10 +6,12 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+
 /**
  * Contains frame decorating logic
  *
- * This class is responsible for assigning the correct {@link Frame_Decorator},
+ * This class is responsible for assigning the correct {@link Decorator},
  * {@link Positioner}, and {@link Frame_Reflower} objects to {@link Frame}
  * objects.  This is determined primarily by the Frame's display type, but
  * also by the Frame's node's type (e.g. DomElement vs. #text)
@@ -25,11 +27,11 @@ class Frame_Factory
      *
      * @param $root Frame The frame to decorate
      * @param $dompdf DOMPDF The dompdf instance
-     * @return Page_Frame_Decorator
+     * @return \DomPdf\Frame\Decorator\Page
      */
     static function decorate_root(Frame $root, DOMPDF $dompdf)
     {
-        $frame = new Page_Frame_Decorator($root, $dompdf);
+        $frame = new \DomPdf\Frame\Decorator\Page($root, $dompdf);
         $frame->set_reflower(new Page_Frame_Reflower($frame));
         $root->set_decorator($frame);
         return $frame;
@@ -43,7 +45,7 @@ class Frame_Factory
      * @param Frame $root The frame to decorate
      *
      * @throws DOMPDF_Exception
-     * @return Frame_Decorator
+     * @return Decorator
      * FIXME: this is admittedly a little smelly...
      */
     static function decorate_frame(Frame $frame, DOMPDF $dompdf, Frame $root = null)
@@ -109,19 +111,19 @@ class Frame_Factory
             case "table-header-group":
             case "table-footer-group":
                 $positioner = "Null";
-                $decorator = "Table_Row_Group";
+                $decorator = "TableRowGroup";
                 $reflower = "Table_Row_Group";
                 break;
 
             case "table-row":
                 $positioner = "Null";
-                $decorator = "Table_Row";
+                $decorator = "TableRow";
                 $reflower = "Table_Row";
                 break;
 
             case "table-cell":
                 $positioner = "Table_Cell";
-                $decorator = "Table_Cell";
+                $decorator = "TableCell";
                 $reflower = "Table_Cell";
                 break;
 
@@ -139,9 +141,9 @@ class Frame_Factory
                 }
 
                 if ($style->list_style_image !== "none") {
-                    $decorator = "List_Bullet_Image";
+                    $decorator = "ImageBulletList";
                 } else {
-                    $decorator = "List_Bullet";
+                    $decorator = "BulletList";
                 }
 
                 $reflower = "List_Bullet";
@@ -193,7 +195,7 @@ class Frame_Factory
         }
 
         $positioner .= "_Positioner";
-        $decorator .= "_Frame_Decorator";
+        $decorator = '\DomPdf\Frame\Decorator\\'.$decorator;
         $reflower .= "_Frame_Reflower";
 
         $deco = new $decorator($frame, $dompdf);

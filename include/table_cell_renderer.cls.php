@@ -37,7 +37,7 @@ class Table_Cell_Renderer extends Block_Renderer
             $this->_background_image($url, $x, $y, $w, $h, $style);
         }
 
-        $table = Table_Frame_Decorator::find_parent_table($frame);
+        $table = \DomPdf\Frame\Decorator\Table::find_parent_table($frame);
 
         if ($table->get_style()->border_collapse !== "collapse") {
             $this->_render_border($frame);

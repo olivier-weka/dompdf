@@ -7,6 +7,9 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
+use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+use \DomPdf\Frame\Decorator\Block as BlockDecorator;
+
 /**
  * DOMPDF - PHP5 HTML to PDF renderer
  *
@@ -25,11 +28,11 @@
  * {@link Frame}s are then decorated (in the design pattern sense of the
  * word) based on their CSS display property ({@link
  * http://www.w3.org/TR/CSS21/visuren.html#propdef-display}).
- * Frame_Decorators augment the basic {@link Frame} class by adding
+ * {@link Decorator} augment the basic {@link Frame} class by adding
  * additional properties and methods specific to the particular type of
  * {@link Frame}.  For example, in the CSS layout model, block frames
  * (display: block;) contain line boxes that are usually filled with text or
- * other inline frames.  The Block_Frame_Decorator therefore adds a $lines
+ * other inline frames.  The {@link BlockDecorator} therefore adds a $lines
  * property as well as methods to add {@link Frame}s to lines and to add
  * additional lines.  {@link Frame}s also are attached to specific
  * Positioner and {@link Frame_Reflower} objects that contain the

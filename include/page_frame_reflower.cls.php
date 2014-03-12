@@ -30,7 +30,7 @@ class Page_Frame_Reflower extends Frame_Reflower
      */
     private $_canvas;
 
-    function __construct(Page_Frame_Decorator $frame)
+    function __construct(\DomPdf\Frame\Decorator\Page $frame)
     {
         parent::__construct($frame);
     }
@@ -79,7 +79,7 @@ class Page_Frame_Reflower extends Frame_Reflower
      * Paged layout:
      * http://www.w3.org/TR/CSS21/page.html
      */
-    function reflow(Block_Frame_Decorator $block = null)
+    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
     {
         $fixed_children = array();
         $prev_child = null;

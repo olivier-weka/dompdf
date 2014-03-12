@@ -5,6 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Decorator;
 
 /**
  * Decorates table cells for layout
@@ -12,7 +13,7 @@
  * @access private
  * @package dompdf
  */
-class Table_Cell_Frame_Decorator extends Block_Frame_Decorator
+class TableCell extends Block
 {
 
     protected $_resolved_borders;
@@ -20,7 +21,7 @@ class Table_Cell_Frame_Decorator extends Block_Frame_Decorator
 
     //........................................................................
 
-    function __construct(Frame $frame, DOMPDF $dompdf)
+    function __construct(\Frame $frame, \DOMPDF $dompdf)
     {
         parent::__construct($frame, $dompdf);
         $this->_resolved_borders = array();

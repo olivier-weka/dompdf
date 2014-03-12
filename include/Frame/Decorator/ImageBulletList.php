@@ -6,6 +6,7 @@
  * @author  Helmut Tischer <htischer@weihenstephan.org>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Decorator;
 
 /**
  * Decorates frames for list bullets with custom images
@@ -13,13 +14,13 @@
  * @access private
  * @package dompdf
  */
-class List_Bullet_Image_Frame_Decorator extends Frame_Decorator
+class ImageBulletList extends AbstractDecorator
 {
 
     /**
      * The underlying image frame
      *
-     * @var Image_Frame_Decorator
+     * @var Image
      */
     protected $_img;
 
@@ -40,15 +41,15 @@ class List_Bullet_Image_Frame_Decorator extends Frame_Decorator
     /**
      * Class constructor
      *
-     * @param Frame $frame the bullet frame to decorate
-     * @param DOMPDF $dompdf the document's dompdf object
+     * @param \Frame $frame the bullet frame to decorate
+     * @param \DOMPDF $dompdf the document's dompdf object
      */
-    function __construct(Frame $frame, DOMPDF $dompdf)
+    function __construct(\Frame $frame, \DOMPDF $dompdf)
     {
         $style = $frame->get_style();
         $url = $style->list_style_image;
         $frame->get_node()->setAttribute("src", $url);
-        $this->_img = new Image_Frame_Decorator($frame, $dompdf);
+        $this->_img = new Image($frame, $dompdf);
         parent::__construct($this->_img, $dompdf);
         list($width, $height) = dompdf_getimagesize($this->_img->get_image_url());
 
@@ -79,12 +80,12 @@ class List_Bullet_Image_Frame_Decorator extends Frame_Decorator
      */
     function get_width()
     {
-        //ignore image width, use same width as on predefined bullet List_Bullet_Frame_Decorator
+        //ignore image width, use same width as on predefined BulletList
         //for proper alignment of bullet image and text. Allow image to not fitting on left border.
         //This controls the distance between bullet image and text
         //return $this->_width;
-        return $this->_frame->get_style()->get_font_size() * List_Bullet_Frame_Decorator::BULLET_SIZE +
-        2 * List_Bullet_Frame_Decorator::BULLET_PADDING;
+        return $this->_frame->get_style()->get_font_size() * BulletList::BULLET_SIZE +
+        2 * BulletList::BULLET_PADDING;
     }
 
     /**
@@ -105,15 +106,15 @@ class List_Bullet_Image_Frame_Decorator extends Frame_Decorator
      */
     function get_margin_width()
     {
-        //ignore image width, use same width as on predefined bullet List_Bullet_Frame_Decorator
+        //ignore image width, use same width as on predefined BulletList
         //for proper alignment of bullet image and text. Allow image to not fitting on left border.
         //This controls the extra indentation of text to make room for the bullet image.
         //Here use actual image size, not predefined bullet size
-        //return $this->_frame->get_style()->get_font_size()*List_Bullet_Frame_Decorator::BULLET_SIZE +
-        //  2 * List_Bullet_Frame_Decorator::BULLET_PADDING;
+        //return $this->_frame->get_style()->get_font_size()*BulletList::BULLET_SIZE +
+        //  2 * BulletList::BULLET_PADDING;
 
         // Small hack to prevent indenting of list text
-        // Image Might not exist, then position like on list_bullet_frame_decorator fallback to none.
+        // Image Might not exist, then position like on BulletList fallback to none.
         if ($this->_frame->get_style()->list_style_position === "outside" ||
             $this->_width == 0
         )
@@ -122,8 +123,8 @@ class List_Bullet_Image_Frame_Decorator extends Frame_Decorator
         //The text starts to the right of the image.
         //Between the image and the text there is an added margin of image width.
         //Where this comes from is unknown.
-        //The corresponding List_Bullet_Frame_Decorator sets a smaller margin. bullet size?
-        return $this->_width + 2 * List_Bullet_Frame_Decorator::BULLET_PADDING;
+        //The corresponding BulletList sets a smaller margin. bullet size?
+        return $this->_width + 2 * BulletList::BULLET_PADDING;
     }
 
     /**
@@ -135,7 +136,7 @@ class List_Bullet_Image_Frame_Decorator extends Frame_Decorator
     {
         //Hits only on "inset" lists items, to increase height of box
         //based on image height
-        return $this->_height + 2 * List_Bullet_Frame_Decorator::BULLET_PADDING;
+        return $this->_height + 2 * BulletList::BULLET_PADDING;
     }
 
     /**
