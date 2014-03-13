@@ -10,6 +10,7 @@ namespace DomPdf\Frame\Decorator;
 use \Frame;
 use DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
 use DomPdf\Frame\Positioner\AbstractPositioner as Positioner;
+use DomPdf\Frame\Reflower\AbstractReflower as Reflower;
 use DomPdf\Frame\FrameTreeList;
 
 /**
@@ -48,7 +49,7 @@ abstract class AbstractDecorator extends Frame
     /**
      * Reflower object used to calculate frame dimensions (Strategy pattern)
      *
-     * @var \Frame_Reflower
+     * @var Reflower
      */
     protected $_reflower;
 
@@ -484,7 +485,7 @@ abstract class AbstractDecorator extends Frame
         return new FrameTreeList($this);
     }
 
-    function set_positioner(\Positioner $posn)
+    function set_positioner(Positioner $posn)
     {
         $this->_positioner = $posn;
         if ($this->_frame instanceof Decorator) {
@@ -492,7 +493,7 @@ abstract class AbstractDecorator extends Frame
         }
     }
 
-    function set_reflower(\Frame_Reflower $reflower)
+    function set_reflower(Reflower $reflower)
     {
         $this->_reflower = $reflower;
         if ($this->_frame instanceof Decorator) {
@@ -501,7 +502,7 @@ abstract class AbstractDecorator extends Frame
     }
 
     /**
-     * @return \Frame_Reflower
+     * @return Reflower
      */
     function get_reflower()
     {

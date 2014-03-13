@@ -6,6 +6,7 @@
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Reflower;
 
 /**
  * Reflows pages
@@ -13,7 +14,7 @@
  * @access private
  * @package dompdf
  */
-class Page_Frame_Reflower extends Frame_Reflower
+class Page extends AbstractReflower
 {
 
     /**
@@ -26,7 +27,7 @@ class Page_Frame_Reflower extends Frame_Reflower
     /**
      * Cache of the canvas
      *
-     * @var Canvas
+     * @var \Canvas
      */
     private $_canvas;
 
@@ -35,7 +36,7 @@ class Page_Frame_Reflower extends Frame_Reflower
         parent::__construct($frame);
     }
 
-    function apply_page_style(Frame $frame, $page_number)
+    function apply_page_style(\Frame $frame, $page_number)
     {
         $style = $frame->get_style();
         $page_styles = $style->get_stylesheet()->get_page_styles();
@@ -165,7 +166,7 @@ class Page_Frame_Reflower extends Frame_Reflower
      * gets triggered on a page
      *
      * @param string $event the type of event
-     * @param Frame $frame the frame that event is triggered on
+     * @param \Frame $frame the frame that event is triggered on
      */
     protected function _check_callbacks($event, $frame)
     {

@@ -5,6 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Reflower;
 
 use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
 
@@ -14,7 +15,7 @@ use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
  * @access private
  * @package dompdf
  */
-class List_Bullet_Frame_Reflower extends Frame_Reflower
+class BulletList extends AbstractReflower
 {
 
     function __construct(Decorator $frame)

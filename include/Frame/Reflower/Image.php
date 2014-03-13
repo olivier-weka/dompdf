@@ -6,6 +6,7 @@
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Reflower;
 
 /**
  * Image reflower class
@@ -13,7 +14,7 @@
  * @access private
  * @package dompdf
  */
-class Image_Frame_Reflower extends Frame_Reflower
+class Image extends AbstractReflower
 {
 
     function __construct(\DomPdf\Frame\Decorator\Image $frame)

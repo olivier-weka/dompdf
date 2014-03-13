@@ -8,12 +8,13 @@
 
 use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
 use DomPdf\Frame\Positioner\AbstractPositioner as Positioner;
+use DomPdf\Frame\Reflower\AbstractReflower as Reflower;
 
 /**
  * Contains frame decorating logic
  *
  * This class is responsible for assigning the correct {@link Decorator},
- * {@link Positioner}, and {@link Frame_Reflower} objects to {@link Frame}
+ * {@link Positioner}, and {@link Reflower} objects to {@link Frame}
  * objects.  This is determined primarily by the Frame's display type, but
  * also by the Frame's node's type (e.g. DomElement vs. #text)
  *
@@ -33,7 +34,7 @@ class Frame_Factory
     static function decorate_root(Frame $root, DOMPDF $dompdf)
     {
         $frame = new \DomPdf\Frame\Decorator\Page($root, $dompdf);
-        $frame->set_reflower(new Page_Frame_Reflower($frame));
+        $frame->set_reflower(new \DomPdf\Frame\Reflower\Page($frame));
         $root->set_decorator($frame);
         return $frame;
     }
@@ -113,19 +114,19 @@ class Frame_Factory
             case "table-footer-group":
                 $positioner = "Null";
                 $decorator = "TableRowGroup";
-                $reflower = "Table_Row_Group";
+                $reflower = "TableRowGroup";
                 break;
 
             case "table-row":
                 $positioner = "Null";
                 $decorator = "TableRow";
-                $reflower = "Table_Row";
+                $reflower = "TableRow";
                 break;
 
             case "table-cell":
                 $positioner = "TableCell";
                 $decorator = "TableCell";
-                $reflower = "Table_Cell";
+                $reflower = "TableCell";
                 break;
 
             case "list-item":
@@ -147,7 +148,7 @@ class Frame_Factory
                     $decorator = "BulletList";
                 }
 
-                $reflower = "List_Bullet";
+                $reflower = "BulletList";
                 break;
 
             case "-dompdf-image":
@@ -195,9 +196,9 @@ class Frame_Factory
             $reflower = "Image";
         }
 
-        $positioner .= '\DomPdf\Frame\Positioner\\'.$positioner;
+        $positioner = '\DomPdf\Frame\Positioner\\'.$positioner;
         $decorator = '\DomPdf\Frame\Decorator\\'.$decorator;
-        $reflower .= "_Frame_Reflower";
+        $reflower = '\DomPdf\Frame\Reflower\\'.$reflower;
 
         $deco = new $decorator($frame, $dompdf);
 

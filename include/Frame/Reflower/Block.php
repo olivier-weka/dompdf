@@ -6,7 +6,9 @@
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Reflower;
 
+use \Frame;
 use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
 use \DomPdf\Frame\Decorator\Block as BlockDecorator;
 use \DomPdf\Frame\Decorator\Text as TextDecorator;
@@ -17,7 +19,7 @@ use \DomPdf\Frame\Decorator\Text as TextDecorator;
  * @access private
  * @package dompdf
  */
-class Block_Frame_Reflower extends Frame_Reflower
+class Block extends AbstractReflower
 {
     // Minimum line width to justify, as fraction of available width
     const MIN_JUSTIFY_WIDTH = 0.80;
@@ -152,7 +154,7 @@ class Block_Frame_Reflower extends Frame_Reflower
     /**
      * Call the above function, but resolve max/min widths
      *
-     * @throws DOMPDF_Exception
+     * @throws \DOMPDF_Exception
      * @return array
      */
     protected function _calculate_restricted_width()
@@ -169,7 +171,7 @@ class Block_Frame_Reflower extends Frame_Reflower
         //  $cb = $frame->find_positionned_parent()->get_containing_block();
 
         if (!isset($cb["w"])) {
-            throw new DOMPDF_Exception("Box property calculation requires containing block width");
+            throw new \DOMPDF_Exception("Box property calculation requires containing block width");
         }
 
         // Treat width 100% as auto
@@ -438,7 +440,7 @@ class Block_Frame_Reflower extends Frame_Reflower
                 }
 
                 // One space character's width. Will be used to get a more accurate spacing
-                $space_width = Font_Metrics::get_text_width(" ", $style->font_family, $style->font_size);
+                $space_width = \Font_Metrics::get_text_width(" ", $style->font_family, $style->font_size);
 
                 foreach ($lines as $line) {
                     if ($line->left) {

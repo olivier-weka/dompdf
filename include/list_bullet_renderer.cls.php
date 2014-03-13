@@ -144,7 +144,7 @@ class List_Bullet_Renderer extends Abstract_Renderer
 
             //For expected size and aspect, instead of box size, use image natural size scaled to DPI.
             // Resample the bullet image to be consistent with 'auto' sized images
-            // See also Image_Frame_Reflower::get_min_max_width
+            // See also \DomPdf\Frame\Reflower\Image::get_min_max_width
             // Tested php ver: value measured in px, suffix "px" not in value: rtrim unnecessary.
             //$w = $frame->get_width();
             //$h = $frame->get_height();

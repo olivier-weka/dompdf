@@ -6,6 +6,9 @@
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Reflower;
+
+use \Font_Metrics;
 
 /**
  * Reflows text frames.
@@ -13,7 +16,7 @@
  * @access private
  * @package dompdf
  */
-class Text_Frame_Reflower extends Frame_Reflower
+class Text extends AbstractReflower
 {
 
     /**

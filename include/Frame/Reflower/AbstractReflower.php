@@ -5,6 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Reflower;
 
 /**
  * Base reflower class
@@ -15,13 +16,13 @@
  * @access private
  * @package dompdf
  */
-abstract class Frame_Reflower
+abstract class AbstractReflower
 {
 
     /**
      * Frame for this reflower
      *
-     * @var Frame
+     * @var \Frame
      */
     protected $_frame;
 
@@ -32,7 +33,7 @@ abstract class Frame_Reflower
      */
     protected $_min_max_cache;
 
-    function __construct(Frame $frame)
+    function __construct(\Frame $frame)
     {
         $this->_frame = $frame;
         $this->_min_max_cache = null;
@@ -44,7 +45,7 @@ abstract class Frame_Reflower
     }
 
     /**
-     * @return DOMPDF
+     * @return \DOMPDF
      */
     function get_dompdf()
     {
@@ -174,7 +175,7 @@ abstract class Frame_Reflower
             $inline_max = 0;
 
             // Add all adjacent inline widths together to calculate max width
-            while ($iter->valid() && in_array($iter->current()->get_style()->display, Style::$INLINE_TYPES)) {
+            while ($iter->valid() && in_array($iter->current()->get_style()->display, \Style::$INLINE_TYPES)) {
 
                 $child = $iter->current();
 
@@ -435,7 +436,7 @@ abstract class Frame_Reflower
             // add generated content to the font subset
             // FIXME: This is currently too late because the font subset has already been generated.
             //        See notes in issue #750.
-            if ($frame->get_dompdf()->get_option("enable_font_subsetting") && $frame->get_dompdf()->get_canvas() instanceof CPDF_Adapter) {
+            if ($frame->get_dompdf()->get_option("enable_font_subsetting") && $frame->get_dompdf()->get_canvas() instanceof \CPDF_Adapter) {
                 $frame->get_dompdf()->get_canvas()->register_string_subset($style->font_family, $content);
             }
 
@@ -444,10 +445,10 @@ abstract class Frame_Reflower
             $new_style = $style->get_stylesheet()->create_style();
             $new_style->inherit($style);
 
-            $new_frame = new Frame($node);
+            $new_frame = new \Frame($node);
             $new_frame->set_style($new_style);
 
-            Frame_Factory::decorate_frame($new_frame, $frame->get_dompdf(), $frame->get_root());
+            \Frame_Factory::decorate_frame($new_frame, $frame->get_dompdf(), $frame->get_root());
             $frame->append_child($new_frame);
         }
     }

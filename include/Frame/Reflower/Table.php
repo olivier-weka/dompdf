@@ -5,6 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Reflower;
 
 use \DomPdf\Frame\Decorator\Table as TableDecorator;
 
@@ -14,7 +15,7 @@ use \DomPdf\Frame\Decorator\Table as TableDecorator;
  * @access private
  * @package dompdf
  */
-class Table_Frame_Reflower extends Frame_Reflower
+class Table extends AbstractReflower
 {
     /**
      * Frame for this reflower

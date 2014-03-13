@@ -5,6 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Reflower;
 
 /**
  * Reflows table cells
@@ -12,7 +13,7 @@
  * @access private
  * @package dompdf
  */
-class Table_Cell_Frame_Reflower extends Block_Frame_Reflower
+class TableCell extends Block
 {
 
     //........................................................................

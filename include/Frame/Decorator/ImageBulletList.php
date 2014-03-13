@@ -54,7 +54,7 @@ class ImageBulletList extends AbstractDecorator
         list($width, $height) = dompdf_getimagesize($this->_img->get_image_url());
 
         // Resample the bullet image to be consistent with 'auto' sized images
-        // See also Image_Frame_Reflower::get_min_max_width
+        // See also \DomPdf\Frame\Reflower\Image::get_min_max_width
         // Tested php ver: value measured in px, suffix "px" not in value: rtrim unnecessary.
         $dpi = $this->_dompdf->get_option("dpi");
         $this->_width = ((float)rtrim($width, "px") * 72) / $dpi;

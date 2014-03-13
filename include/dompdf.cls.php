@@ -9,6 +9,7 @@
 
 use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
 use DomPdf\Frame\Positioner\AbstractPositioner as Positioner;
+use DomPdf\Frame\Reflower\AbstractReflower as Reflower;
 use \DomPdf\Frame\Decorator\Block as BlockDecorator;
 
 /**
@@ -36,7 +37,7 @@ use \DomPdf\Frame\Decorator\Block as BlockDecorator;
  * other inline frames.  The {@link BlockDecorator} therefore adds a $lines
  * property as well as methods to add {@link Frame}s to lines and to add
  * additional lines.  {@link Frame}s also are attached to specific
- * {@link Positioner} and {@link Frame_Reflower} objects that contain the
+ * {@link Positioner} and {@link Reflower} objects that contain the
  * positioining and layout algorithm for a specific type of frame,
  * respectively.  This is an application of the Strategy pattern.
  *
