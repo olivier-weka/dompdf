@@ -5,13 +5,14 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Positioner;
 
 use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
 
 /**
  * Positions absolutely positioned frames
  */
-class Absolute_Positioner extends Positioner
+class Absolute extends AbstractPositioner
 {
 
     function __construct(Decorator $frame)

@@ -5,6 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Positioner;
 
 use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
 
@@ -16,7 +17,7 @@ use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
  * @access private
  * @package dompdf
  */
-abstract class Positioner
+abstract class AbstractPositioner
 {
 
     /**

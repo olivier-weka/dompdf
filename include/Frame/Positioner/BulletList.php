@@ -6,6 +6,7 @@
  * @author  Helmut Tischer <htischer@weihenstephan.org>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Positioner;
 
 use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
 
@@ -15,7 +16,7 @@ use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
  * @access private
  * @package dompdf
  */
-class List_Bullet_Positioner extends Positioner
+class BulletList extends AbstractPositioner
 {
 
     function __construct(Decorator $frame)

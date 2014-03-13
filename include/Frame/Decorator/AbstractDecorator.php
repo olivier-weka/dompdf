@@ -9,6 +9,7 @@ namespace DomPdf\Frame\Decorator;
 
 use \Frame;
 use DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+use DomPdf\Frame\Positioner\AbstractPositioner as Positioner;
 use DomPdf\Frame\FrameTreeList;
 
 /**
@@ -40,7 +41,7 @@ abstract class AbstractDecorator extends Frame
     /**
      * Positioner object used to position this frame (Strategy pattern)
      *
-     * @var \Positioner
+     * @var Positioner
      */
     protected $_positioner;
 

@@ -5,6 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
+namespace DomPdf\Frame\Positioner;
 
 use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
 
@@ -14,7 +15,7 @@ use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
  * @access private
  * @package dompdf
  */
-class Inline_Positioner extends Positioner
+class Inline extends AbstractPositioner
 {
 
     function __construct(Decorator $frame)
@@ -41,7 +42,7 @@ class Inline_Positioner extends Positioner
         // End debugging
 
         if (!$p)
-            throw new DOMPDF_Exception("No block-level parent found.  Not good.");
+            throw new \DOMPDF_Exception("No block-level parent found.  Not good.");
 
         $f = $this->_frame;
 

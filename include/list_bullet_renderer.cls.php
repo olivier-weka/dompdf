@@ -154,7 +154,7 @@ class List_Bullet_Renderer extends Abstract_Renderer
             $h = ((float)rtrim($height, "px") * 72) / $dpi;
 
             $x -= $w;
-            $y -= ($line_height - $font_size) / 2; //Reverse hinting of list_bullet_positioner
+            $y -= ($line_height - $font_size) / 2; //Reverse hinting of \DomPdf\Frame\Positioner\ListBullet;
 
             $this->_canvas->image($img, $x, $y, $w, $h);
 

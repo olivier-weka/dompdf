@@ -7,6 +7,7 @@
  */
 
 use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+use DomPdf\Frame\Positioner\AbstractPositioner as Positioner;
 
 /**
  * Contains frame decorating logic
@@ -122,7 +123,7 @@ class Frame_Factory
                 break;
 
             case "table-cell":
-                $positioner = "Table_Cell";
+                $positioner = "TableCell";
                 $decorator = "TableCell";
                 $reflower = "Table_Cell";
                 break;
@@ -137,7 +138,7 @@ class Frame_Factory
                 if ($style->list_style_position === "inside") {
                     $positioner = "Inline";
                 } else {
-                    $positioner = "List_Bullet";
+                    $positioner = "BulletList";
                 }
 
                 if ($style->list_style_image !== "none") {
@@ -194,7 +195,7 @@ class Frame_Factory
             $reflower = "Image";
         }
 
-        $positioner .= "_Positioner";
+        $positioner .= '\DomPdf\Frame\Positioner\\'.$positioner;
         $decorator = '\DomPdf\Frame\Decorator\\'.$decorator;
         $reflower .= "_Frame_Reflower";
 
