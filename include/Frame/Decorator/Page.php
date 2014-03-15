@@ -5,10 +5,10 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Decorator;
+namespace Dompdf\Frame\Decorator;
 
-use \Renderer;
-use \Frame;
+use Renderer;
+use Frame;
 
 /**
  * Decorates frames for page layout

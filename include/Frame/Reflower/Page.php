@@ -6,7 +6,7 @@
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Reflower;
+namespace Dompdf\Frame\Reflower;
 
 /**
  * Reflows pages
@@ -31,7 +31,7 @@ class Page extends AbstractReflower
      */
     private $_canvas;
 
-    function __construct(\DomPdf\Frame\Decorator\Page $frame)
+    function __construct(\Dompdf\Frame\Decorator\Page $frame)
     {
         parent::__construct($frame);
     }
@@ -80,7 +80,7 @@ class Page extends AbstractReflower
      * Paged layout:
      * http://www.w3.org/TR/CSS21/page.html
      */
-    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
+    function reflow(\Dompdf\Frame\Decorator\Block $block = null)
     {
         $fixed_children = array();
         $prev_child = null;

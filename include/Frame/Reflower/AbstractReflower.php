@@ -5,7 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Reflower;
+namespace Dompdf\Frame\Reflower;
 
 /**
  * Base reflower class
@@ -128,7 +128,7 @@ abstract class AbstractReflower
 
     //........................................................................
 
-    abstract function reflow(\DomPdf\Frame\Decorator\Block $block = null);
+    abstract function reflow(\Dompdf\Frame\Decorator\Block $block = null);
 
     //........................................................................
 

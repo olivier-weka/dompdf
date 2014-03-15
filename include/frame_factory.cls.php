@@ -6,9 +6,9 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
-use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
-use DomPdf\Frame\Positioner\AbstractPositioner as Positioner;
-use DomPdf\Frame\Reflower\AbstractReflower as Reflower;
+use Dompdf\Frame\Decorator\AbstractDecorator as Decorator;
+use Dompdf\Frame\Positioner\AbstractPositioner as Positioner;
+use Dompdf\Frame\Reflower\AbstractReflower as Reflower;
 
 /**
  * Contains frame decorating logic
@@ -29,12 +29,12 @@ class Frame_Factory
      *
      * @param $root Frame The frame to decorate
      * @param $dompdf DOMPDF The dompdf instance
-     * @return \DomPdf\Frame\Decorator\Page
+     * @return \Dompdf\Frame\Decorator\Page
      */
     static function decorate_root(Frame $root, DOMPDF $dompdf)
     {
-        $frame = new \DomPdf\Frame\Decorator\Page($root, $dompdf);
-        $frame->set_reflower(new \DomPdf\Frame\Reflower\Page($frame));
+        $frame = new \Dompdf\Frame\Decorator\Page($root, $dompdf);
+        $frame->set_reflower(new \Dompdf\Frame\Reflower\Page($frame));
         $root->set_decorator($frame);
         return $frame;
     }
@@ -196,9 +196,9 @@ class Frame_Factory
             $reflower = "Image";
         }
 
-        $positioner = '\DomPdf\Frame\Positioner\\'.$positioner;
-        $decorator = '\DomPdf\Frame\Decorator\\'.$decorator;
-        $reflower = '\DomPdf\Frame\Reflower\\'.$reflower;
+        $positioner = '\Dompdf\Frame\Positioner\\'.$positioner;
+        $decorator = '\Dompdf\Frame\Decorator\\'.$decorator;
+        $reflower = '\Dompdf\Frame\Reflower\\'.$reflower;
 
         $deco = new $decorator($frame, $dompdf);
 

@@ -1,6 +1,6 @@
 <?php
 
-use DomPdf\Frame\FrameTreeList;
+use Dompdf\Frame\FrameTreeList;
 
 /**
  * @package dompdf
@@ -92,7 +92,7 @@ class Frame_Tree
     /**
      * Returns the root frame of the tree
      *
-     * @return \DomPdf\Frame\Decorator\Page
+     * @return \Dompdf\Frame\Decorator\Page
      */
     public function get_root()
     {

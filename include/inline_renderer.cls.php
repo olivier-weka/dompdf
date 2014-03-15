@@ -161,7 +161,7 @@ class Inline_Renderer extends Abstract_Renderer
         }
 
         //    pre_var_dump(get_class($frame->get_next_sibling()));
-        //    $last_row = get_class($frame->get_next_sibling()) !== '\DomPdf\Frame\Decorator\Inline';
+        //    $last_row = get_class($frame->get_next_sibling()) !== '\Dompdf\Frame\Decorator\Inline';
         // Draw the right border if this is the last row
         if ($bp["right"]["style"] !== "none" && $bp["right"]["color"] !== "transparent" && $widths[1] > 0) {
             $method = "_border_" . $bp["right"]["style"];

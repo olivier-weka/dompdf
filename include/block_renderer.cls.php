@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
-use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+use Dompdf\Frame\Decorator\AbstractDecorator as Decorator;
 
 /**
  * Renders block frames

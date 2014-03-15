@@ -5,13 +5,13 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Decorator;
+namespace Dompdf\Frame\Decorator;
 
-use \Frame;
-use DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
-use DomPdf\Frame\Positioner\AbstractPositioner as Positioner;
-use DomPdf\Frame\Reflower\AbstractReflower as Reflower;
-use DomPdf\Frame\FrameTreeList;
+use Frame;
+use Dompdf\Frame\Decorator\AbstractDecorator as Decorator;
+use Dompdf\Frame\Positioner\AbstractPositioner as Positioner;
+use Dompdf\Frame\Reflower\AbstractReflower as Reflower;
+use Dompdf\Frame\FrameTreeList;
 
 /**
  * Base Decorator class

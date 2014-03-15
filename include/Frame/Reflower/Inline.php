@@ -5,7 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Reflower;
+namespace Dompdf\Frame\Reflower;
 
 /**
  * Reflows inline frames
@@ -23,7 +23,7 @@ class Inline extends AbstractReflower
 
     //........................................................................
 
-    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
+    function reflow(\Dompdf\Frame\Decorator\Block $block = null)
     {
         $frame = $this->_frame;
 
@@ -44,14 +44,14 @@ class Inline extends AbstractReflower
         $cb = $frame->get_containing_block();
 
         // Add our margin, padding & border to the first and last children
-        if (($f = $frame->get_first_child()) && $f instanceof \DomPdf\Frame\Decorator\Text) {
+        if (($f = $frame->get_first_child()) && $f instanceof \Dompdf\Frame\Decorator\Text) {
             $f_style = $f->get_style();
             $f_style->margin_left = $style->margin_left;
             $f_style->padding_left = $style->padding_left;
             $f_style->border_left = $style->border_left;
         }
 
-        if (($l = $frame->get_last_child()) && $l instanceof \DomPdf\Frame\Decorator\Text) {
+        if (($l = $frame->get_last_child()) && $l instanceof \Dompdf\Frame\Decorator\Text) {
             $l_style = $l->get_style();
             $l_style->margin_right = $style->margin_right;
             $l_style->padding_right = $style->padding_right;

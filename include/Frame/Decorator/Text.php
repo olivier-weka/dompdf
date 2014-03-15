@@ -7,7 +7,7 @@
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Decorator;
+namespace Dompdf\Frame\Decorator;
 
 /**
  * Decorates Frame objects for text layout

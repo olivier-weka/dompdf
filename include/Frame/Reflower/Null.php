@@ -5,7 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Reflower;
+namespace Dompdf\Frame\Reflower;
 
 /**
  * Dummy reflower
@@ -21,7 +21,7 @@ class Null extends AbstractReflower
         parent::__construct($frame);
     }
 
-    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
+    function reflow(\Dompdf\Frame\Decorator\Block $block = null)
     {
         return;
     }

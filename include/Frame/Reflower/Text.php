@@ -6,9 +6,9 @@
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Reflower;
+namespace Dompdf\Frame\Reflower;
 
-use \Font_Metrics;
+use Font_Metrics;
 
 /**
  * Reflows text frames.
@@ -20,18 +20,18 @@ class Text extends AbstractReflower
 {
 
     /**
-     * @var \DomPdf\Frame\Decorator\Block
+     * @var \Dompdf\Frame\Decorator\Block
      */
     protected $_block_parent; // Nearest block-level ancestor
 
     /**
-     * @var \DomPdf\Frame\Decorator\Text
+     * @var \Dompdf\Frame\Decorator\Text
      */
     protected $_frame;
 
     public static $_whitespace_pattern = "/[ \t\r\n\f]+/u";
 
-    function __construct(\DomPdf\Frame\Decorator\Text $frame)
+    function __construct(\Dompdf\Frame\Decorator\Text $frame)
     {
         parent::__construct($frame);
     }
@@ -302,7 +302,7 @@ class Text extends AbstractReflower
             // FIXME: Include non-breaking spaces?
             $t = $frame->get_text();
             $parent = $frame->get_parent();
-            $is_inline_frame = get_class($parent) === '\DomPdf\Frame\Decorator\Inline';
+            $is_inline_frame = get_class($parent) === '\Dompdf\Frame\Decorator\Inline';
 
             if ((!$is_inline_frame && !$frame->get_next_sibling()) /* ||
           ( $is_inline_frame && !$parent->get_next_sibling())*/
@@ -326,7 +326,7 @@ class Text extends AbstractReflower
 
     //........................................................................
 
-    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
+    function reflow(\Dompdf\Frame\Decorator\Block $block = null)
     {
         $frame = $this->_frame;
         $page = $frame->get_root();

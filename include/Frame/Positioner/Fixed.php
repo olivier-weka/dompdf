@@ -6,9 +6,9 @@
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Positioner;
+namespace Dompdf\Frame\Positioner;
 
-use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+use Dompdf\Frame\Decorator\AbstractDecorator as Decorator;
 
 /**
  * Positions fixely positioned frames

@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
-use DomPdf\Frame\Decorator\BulletList as BulletListDecorator;
+use Dompdf\Frame\Decorator\BulletList as BulletListDecorator;
 
 /**
  * Renders list bullets

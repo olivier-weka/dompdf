@@ -5,10 +5,10 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Decorator;
+namespace Dompdf\Frame\Decorator;
 
-use \Frame;
-use \Cellmap;
+use Frame;
+use Cellmap;
 
 /**
  * Decorates Frames for table layout

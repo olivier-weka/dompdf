@@ -5,7 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Reflower;
+namespace Dompdf\Frame\Reflower;
 
 /**
  * Reflows table rows
@@ -17,14 +17,14 @@ class TableRow extends AbstractReflower
 {
 
 
-    function __construct(\DomPdf\Frame\Decorator\TableRow $frame)
+    function __construct(\Dompdf\Frame\Decorator\TableRow $frame)
     {
         parent::__construct($frame);
     }
 
     //........................................................................
 
-    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
+    function reflow(\Dompdf\Frame\Decorator\Block $block = null)
     {
         $page = $this->_frame->get_root();
 
@@ -48,7 +48,7 @@ class TableRow extends AbstractReflower
         if ($page->is_full())
             return;
 
-        $table = \DomPdf\Frame\Decorator\Table::find_parent_table($this->_frame);
+        $table = \Dompdf\Frame\Decorator\Table::find_parent_table($this->_frame);
         $cellmap = $table->get_cellmap();
         $style->width = $cellmap->get_frame_width($this->_frame);
         $style->height = $cellmap->get_frame_height($this->_frame);

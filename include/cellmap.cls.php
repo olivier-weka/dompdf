@@ -6,7 +6,7 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
-use DomPdf\Frame\Decorator\Table as TableDecorator;
+use Dompdf\Frame\Decorator\Table as TableDecorator;
 
 /**
  * Maps table cells to the table grid.
@@ -812,7 +812,7 @@ class Cellmap
                 $h += $this->_rows[$row]["height"];
             }
 
-            if ($frame instanceof \DomPdf\Frame\Decorator\TableCell) {
+            if ($frame instanceof \Dompdf\Frame\Decorator\TableCell) {
                 $frame->set_cell_height($h);
             } else {
                 $frame->get_style()->height = $h;
@@ -844,7 +844,7 @@ class Cellmap
                 $new_height = 0;
             }
 
-            if ($frame instanceof \DomPdf\Frame\Decorator\TableCell) {
+            if ($frame instanceof \Dompdf\Frame\Decorator\TableCell) {
                 $frame->set_cell_height($new_height);
             } else {
                 $frame->get_style()->height = $new_height;

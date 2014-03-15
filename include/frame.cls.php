@@ -6,8 +6,8 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
-use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
-use DomPdf\Frame\FrameList;
+use Dompdf\Frame\Decorator\AbstractDecorator as Decorator;
+use Dompdf\Frame\FrameList;
 
 /**
  * The main Frame class
@@ -1061,11 +1061,11 @@ class Frame
 
         $str .= "\nStyle: <pre>" . $this->_style->__toString() . "</pre>";
 
-        if ($this->_decorator instanceof \DomPdf\Frame\Decorator\Block) {
+        if ($this->_decorator instanceof \Dompdf\Frame\Decorator\Block) {
             $str .= "Lines:<pre>";
             foreach ($this->_decorator->get_line_boxes() as $line) {
                 foreach ($line->get_frames() as $frame) {
-                    if ($frame instanceof \DomPdf\Frame\Decorator\Text) {
+                    if ($frame instanceof \Dompdf\Frame\Decorator\Text) {
                         $str .= "\ntext: ";
                         $str .= "'" . htmlspecialchars($frame->get_text()) . "'";
                     } else {

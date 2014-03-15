@@ -5,9 +5,9 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Reflower;
+namespace Dompdf\Frame\Reflower;
 
-use \DomPdf\Frame\Decorator\Table as TableDecorator;
+use Dompdf\Frame\Decorator\Table as TableDecorator;
 
 /**
  * Reflows tables
@@ -373,9 +373,9 @@ class Table extends AbstractReflower
     //........................................................................
 
     /**
-     * @param \DomPdf\Frame\Decorator\Block $block
+     * @param \Dompdf\Frame\Decorator\Block $block
      */
-    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
+    function reflow(\Dompdf\Frame\Decorator\Block $block = null)
     {
         /**
          * @var TableDecorator

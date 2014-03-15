@@ -5,9 +5,9 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Positioner;
+namespace Dompdf\Frame\Positioner;
 
-use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+use Dompdf\Frame\Decorator\AbstractDecorator as Decorator;
 
 /**
  * Positions inline frames
@@ -29,7 +29,7 @@ class Inline extends AbstractPositioner
     {
         /**
          * Find our nearest block level parent and access its lines property.
-         * @var \DomPdf\Frame\Decorator\Block
+         * @var \Dompdf\Frame\Decorator\Block
          */
         $p = $this->_frame->find_block_parent();
 
@@ -61,7 +61,7 @@ class Inline extends AbstractPositioner
         $f = $this->_frame;
 
         if (!$is_fixed && $f->get_parent() &&
-            $f->get_parent() instanceof \DomPdf\Frame\Decorator\Inline &&
+            $f->get_parent() instanceof \Dompdf\Frame\Decorator\Inline &&
             $f->is_text_node()
         ) {
 

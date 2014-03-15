@@ -6,7 +6,7 @@
  * @author  Helmut Tischer <htischer@weihenstephan.org>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Decorator;
+namespace Dompdf\Frame\Decorator;
 
 /**
  * Decorates frames for list bullet rendering

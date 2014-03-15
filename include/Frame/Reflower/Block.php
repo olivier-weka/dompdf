@@ -6,12 +6,12 @@
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Reflower;
+namespace Dompdf\Frame\Reflower;
 
-use \Frame;
-use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
-use \DomPdf\Frame\Decorator\Block as BlockDecorator;
-use \DomPdf\Frame\Decorator\Text as TextDecorator;
+use Frame;
+use Dompdf\Frame\Decorator\AbstractDecorator as Decorator;
+use Dompdf\Frame\Decorator\Block as BlockDecorator;
+use Dompdf\Frame\Decorator\Text as TextDecorator;
 
 /**
  * Reflows block frames

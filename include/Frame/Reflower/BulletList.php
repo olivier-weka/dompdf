@@ -5,9 +5,9 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Reflower;
+namespace Dompdf\Frame\Reflower;
 
-use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
+use Dompdf\Frame\Decorator\AbstractDecorator as Decorator;
 
 /**
  * Reflows list bullets
@@ -25,7 +25,7 @@ class BulletList extends AbstractReflower
 
     //........................................................................
 
-    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
+    function reflow(\Dompdf\Frame\Decorator\Block $block = null)
     {
         $style = $this->_frame->get_style();
 

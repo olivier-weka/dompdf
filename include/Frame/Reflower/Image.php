@@ -6,7 +6,7 @@
  * @author  Fabien Ménager <fabien.menager@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Reflower;
+namespace Dompdf\Frame\Reflower;
 
 /**
  * Image reflower class
@@ -17,12 +17,12 @@ namespace DomPdf\Frame\Reflower;
 class Image extends AbstractReflower
 {
 
-    function __construct(\DomPdf\Frame\Decorator\Image $frame)
+    function __construct(\Dompdf\Frame\Decorator\Image $frame)
     {
         parent::__construct($frame);
     }
 
-    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
+    function reflow(\Dompdf\Frame\Decorator\Block $block = null)
     {
         $this->_frame->position();
 
@@ -84,7 +84,7 @@ class Image extends AbstractReflower
             // Don't set image original size if "%" branch was 0 or size not given.
             // Otherwise aspect changed on %/auto combination for width/height
             // Resample according to px per inch
-            // See also \DomPdf\Frame\Decorator\ImageBulletList::__construct
+            // See also \Dompdf\Frame\Decorator\ImageBulletList::__construct
             $width = $style->length_in_pt($width);
         }
 
@@ -103,7 +103,7 @@ class Image extends AbstractReflower
             // Don't set image original size if "%" branch was 0 or size not given.
             // Otherwise aspect changed on %/auto combination for width/height
             // Resample according to px per inch
-            // See also \DomPdf\Frame\Decorator\ImageBulletList::__construct
+            // See also \Dompdf\Frame\Decorator\ImageBulletList::__construct
             $height = $style->length_in_pt($height);
         }
 
@@ -113,7 +113,7 @@ class Image extends AbstractReflower
 
             // don't treat 0 as error. Can be downscaled or can be catched elsewhere if image not readable.
             // Resample according to px per inch
-            // See also \DomPdf\Frame\Decorator\ImageBulletList::__construct
+            // See also \Dompdf\Frame\Decorator\ImageBulletList::__construct
             if ($width == 0 && $height == 0) {
                 $dpi = $this->_frame->get_dompdf()->get_option("dpi");
                 $width = (float)($img_width * 72) / $dpi;

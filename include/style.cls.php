@@ -684,7 +684,7 @@ class Style
      * On each modification clear cache to return accurate setting.
      * Also affects direct settings not using __set
      * For easier finding all assignments, attempted to allowing only explicite assignment:
-     * Very many uses, e.g. \DomPdf\Frame\Reflower\AbstractReflower -> for now leave as it is
+     * Very many uses, e.g. \Dompdf\Frame\Reflower\AbstractReflower -> for now leave as it is
      * function __set($prop, $val) {
      *   throw new DOMPDF_Exception("Implicite replacement of assignment by __set.  Not good.");
      * }

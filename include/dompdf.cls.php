@@ -7,10 +7,10 @@
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
-use \DomPdf\Frame\Decorator\AbstractDecorator as Decorator;
-use DomPdf\Frame\Positioner\AbstractPositioner as Positioner;
-use DomPdf\Frame\Reflower\AbstractReflower as Reflower;
-use \DomPdf\Frame\Decorator\Block as BlockDecorator;
+use Dompdf\Frame\Decorator\AbstractDecorator as Decorator;
+use Dompdf\Frame\Positioner\AbstractPositioner as Positioner;
+use Dompdf\Frame\Reflower\AbstractReflower as Reflower;
+use Dompdf\Frame\Decorator\Block as BlockDecorator;
 
 /**
  * DOMPDF - PHP5 HTML to PDF renderer
@@ -601,6 +601,13 @@ class DOMPDF
             $str = substr($str, 3);
         }
 
+        // Parse embedded php, first-pass
+        if ($this->get_option("enable_php")) {
+            ob_start();
+            eval("?" . ">$str");
+            $str = ob_get_clean();
+        }
+
         // if the document contains non utf-8 with a utf-8 meta tag chars and was
         // detected as utf-8 by mbstring, problems could happen.
         // http://devzone.zend.com/article/8855
@@ -641,7 +648,13 @@ class DOMPDF
             // http://stackoverflow.com/a/11310258/264628
             $doc = new DOMDocument();
             $doc->preserveWhiteSpace = true;
-            $doc->loadHTML(mb_convert_encoding($str, 'HTML-ENTITIES', 'UTF-8'));
+
+            //Check if string is not UTF-8 and convert it.
+            if ($encoding !== 'UTF-8') {
+                $doc->loadHTML(mb_convert_encoding($str, 'HTML-ENTITIES', $encoding));
+            } else {
+                $doc->loadHTML($str);
+            }
 
             // If some text is before the doctype, we are in quirksmode
             if (preg_match("/^(.+)<!doctype/i", ltrim($str), $matches)) {

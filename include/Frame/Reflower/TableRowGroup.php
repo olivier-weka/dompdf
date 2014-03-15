@@ -5,7 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
-namespace DomPdf\Frame\Reflower;
+namespace Dompdf\Frame\Reflower;
 
 /**
  * Reflows table row groups (e.g. tbody tags)
@@ -21,14 +21,14 @@ class TableRowGroup extends AbstractReflower
         parent::__construct($frame);
     }
 
-    function reflow(\DomPdf\Frame\Decorator\Block $block = null)
+    function reflow(\Dompdf\Frame\Decorator\Block $block = null)
     {
         $page = $this->_frame->get_root();
 
         $style = $this->_frame->get_style();
 
         // Our width is equal to the width of our parent table
-        $table = \DomPdf\Frame\Decorator\Table::find_parent_table($this->_frame);
+        $table = \Dompdf\Frame\Decorator\Table::find_parent_table($this->_frame);
 
         $cb = $this->_frame->get_containing_block();
 
